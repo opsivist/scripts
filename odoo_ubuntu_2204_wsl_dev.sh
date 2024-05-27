@@ -55,11 +55,6 @@ sudo echo "ee88d74834bdec650f7432c7d3ef1c981e42ae7a762a75a01f7f5da59abc18d5 /tmp
 sudo apt-get -y install /tmp/wkhtmltox.deb
 sudo rm -f /tmp/wkhtmltox.deb
 
-echo "PIPX_BIN_DIR=~/.local/bin" >> ~/.bashrc
-echo "PIPX_HOME=~/.local/pipx" >> ~/.bashrc
-echo "PATH=/home/odoo/.local/bin:$PATH" >> ~/.bashrc
-source ~/.bashrc
-
 pipx install acsoo
 pipx install git-aggregator
 pipx install git-autoshare
@@ -67,9 +62,11 @@ pipx install manifestoo
 pipx install pip-deepfreeze
 pipx install pre-commit
 pipx install virtualenv
+pipx ensurepath
 
 git config --global --add safe.directory '*'
 
+mkdir -p ~/.config/git-autoshare
 cat <<EOF >~/.config/git-autoshare/repos.yml
 github.com:
   enterprise:
