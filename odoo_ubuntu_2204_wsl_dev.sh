@@ -15,56 +15,58 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt-get install -y --no-install-recommends \
-    antiword \
-    build-essential \
-    ca-certificates \
-    expect \
-    gettext \
-    git \
-    graphviz \
-    libreoffice-calc \
-    libreoffice-writer \
-    make \
-    mercurial \
-    node-clean-css \
-    node-less \
-    openssh-client \
-    pipx \
-    poppler-utils \
-    postgresql-client \
-    python3 \
-    python3-dev \
-    python3-venv \
-    python3.10 \
-    python3.10-dev \
-    python3.10-venv \
-    python3.11 \
-    python3.11-dev \
-    python3.11-venv \
-    python3.8 \
-    python3.8-dev \
-    python3.8-venv \
-    python3.9 \
-    python3.9-dev \
-    python3.9-venv \
-    rsync \
-    tcl \
-    wget
+       antiword \
+       build-essential \
+       ca-certificates \
+       expect \
+       gettext \
+       git \
+       graphviz \
+       libreoffice-calc \
+       libreoffice-writer \
+       make \
+       mercurial \
+       node-clean-css \
+       node-less \
+       openssh-client \
+       pipx \
+       poppler-utils \
+       postgresql-client \
+       python3 \
+       python3-dev \
+       python3-venv \
+       python3.10 \
+       python3.10-dev \
+       python3.10-venv \
+       python3.11 \
+       python3.11-dev \
+       python3.11-venv \
+       python3.8 \
+       python3.8-dev \
+       python3.8-venv \
+       python3.9 \
+       python3.9-dev \
+       python3.9-venv \
+       rsync \
+       tcl \
+       wget
 sudo wget -q -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 sudo echo "ee88d74834bdec650f7432c7d3ef1c981e42ae7a762a75a01f7f5da59abc18d5 /tmp/wkhtmltox.deb" | sha256sum -c -
 sudo apt-get -y install /tmp/wkhtmltox.deb
 sudo rm -f /tmp/wkhtmltox.deb
 
-sudo bash -c 'export PIPX_BIN_DIR=/usr/local/bin \
-           && export PIPX_HOME=/opt/pipx \
-           && pipx install --pip-args="--no-cache-dir" \
-                acsoo \
-                git-aggregator \
-                git-autoshare \
-                manifestoo \
-                pip-deepfreeze \
-                pre-commit \
-                virtualenv'
+echo "PIPX_BIN_DIR=~/.local/bin" >> ~/.bashrc
+echo "PIPX_HOME=~/.local/pipx" >> ~/.bashrc
+echo "PATH=/home/odoo/.local/bin:$PATH" >> ~/.bashrc
+source ~/.bashrc
+
+pipx install acsoo
+pipx install git-aggregator
+pipx install git-autoshare
+pipx install manifestoo
+pipx install pip-deepfreeze
+pipx install pre-commit
+pipx install virtualenv
 
 git config --global --add safe.directory '*'
 
